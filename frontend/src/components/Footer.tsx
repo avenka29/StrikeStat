@@ -1,7 +1,7 @@
 
 const Footer = () => {
     return (
-        <footer className="bg-black text-white text-center py-4">
+        <footer className="container bg-black py-4 text-white text-center w-full">
             © 2025 StrikeStat
         </footer>
     )

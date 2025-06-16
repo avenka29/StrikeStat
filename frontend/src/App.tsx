@@ -1,17 +1,20 @@
-import Navbar from "./components/Navbar";
-import Footer from "./components/footer";
+import Layout from "./components/Layout";
 
 function App() {
   return (
-    <div className="flex flex-col min-h-screen">
-      <header className="w-full">
+    <div>
+      {/* <header className="">
         <Navbar />
-      </header>
+      </header> */}
+      {/* <div className="bg-white">
+        <Navbar />
+      </div>
 
       <main className="flex-1">
       </main>
+      <Footer /> */}
+      <Layout />
 
-    <Footer />
 
     </div>
   );
