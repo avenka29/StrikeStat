@@ -23,7 +23,7 @@ const Navbar = () => {
 
             <NavigationMenuItem>
               <NavigationMenuTrigger className="font-bold text-lg">Fighters</NavigationMenuTrigger>
-              <NavigationMenuContent className="absolute z-50 mt-2">
+              <NavigationMenuContent className="absolute z-50 mt-2 w-[200px] max-w-[90vw]">
                 <NavigationMenuLink href="/fighters">Link</NavigationMenuLink>
               </NavigationMenuContent>
             </NavigationMenuItem>

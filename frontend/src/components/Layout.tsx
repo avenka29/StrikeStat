@@ -1,12 +1,13 @@
-import Footer from "./Footer"
 import Navbar from "./Navbar"
+import Footer from "@/components/Footer.tsx";
 //{ children }: { children: React.ReactNode }
 const Layout = () => {
   return (
-    <div className="min-h-screen">
-        <Navbar />
-        <Footer />
-    </div>
+      <>
+          <Navbar />
+          <Footer />
+      </>
+
   )
 }
 

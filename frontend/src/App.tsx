@@ -1,4 +1,4 @@
-import Layout from "./components/Layout";
+import Layout from "@/components/Layout.tsx";
 
 function App() {
   return (
@@ -13,9 +13,8 @@ function App() {
       <main className="flex-1">
       </main>
       <Footer /> */}
+
       <Layout />
-
-
     </div>
   );
 }
