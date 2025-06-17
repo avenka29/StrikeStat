@@ -1,6 +1,5 @@
-import Navbar from "./Navbar"
-import Footer from "@/components/Footer.tsx";
 import { Outlet } from 'react-router-dom';
+import Navbar from "./Navbar";
 //{ children }: { children: React.ReactNode }
 const Layout = () => {
   return (
@@ -9,10 +8,10 @@ const Layout = () => {
         <Navbar />
 
 
-        <main className="flex-grow">
-        <Outlet />
+        <main className="flex-grow p-2">
+          <Outlet />
         </main>
-        <footer className="w-full h-24 bg-black text-white text-center py-4">
+        <footer className="w-full bg-black text-white text-center py-4">
           © 2025 StrikeStat
         </footer>
 

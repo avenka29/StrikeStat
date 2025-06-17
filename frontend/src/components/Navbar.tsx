@@ -11,7 +11,7 @@ import {
 
 const Navbar = () => {
   return (
-    <nav className="flex justify-between my-2">
+    <nav className="sticky top-0 flex justify-between my-2">
       <div className="">
         <NavigationMenu viewport={false}>
           <NavigationMenuList>
@@ -29,7 +29,7 @@ const Navbar = () => {
             </NavigationMenuItem>
 
             <NavigationMenuItem>
-              <NavigationMenuLink href="/" className="font-bold text-lg">
+              <NavigationMenuLink href="/about" className="font-bold text-lg">
                 About
               </NavigationMenuLink>
             </NavigationMenuItem>
