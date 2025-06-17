@@ -5,8 +5,8 @@ function App() {
     <div>
       {/* <header className="">
         <Navbar />
-      </header> */}
-      {/* <div className="bg-white">
+      </header> /}
+      {/ <div className="bg-white">
         <Navbar />
       </div>
 
@@ -14,7 +14,33 @@ function App() {
       </main>
       <Footer /> */}
 
-      <Layout />
+          YOOoooooooooooooo
+          1
+          2
+          2
+          2
+
+          1
+          <br />
+          s
+          <br />
+          2
+          2
+          2
+          3
+          3
+          4
+          5
+          5
+          6
+          6
+          6
+          6
+          6
+          7
+          7
+
+
     </div>
   );
 }
