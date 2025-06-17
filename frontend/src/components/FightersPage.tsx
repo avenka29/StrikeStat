@@ -8,7 +8,17 @@ const FightersPage = () => {
     e.preventDefault();
     console.log(searchParam.current?.value);
   }
-  const fightersList: string[] = ["Jon Jones", "Daniel Cormier", "Conor McGregor", "Islam Makhachev", "Some Guy", "Farhad Bhatti"]
+  const fightersList = [
+    { id: 1, name: "Jon Jones", gender: "Male" },
+    { id: 2, name: "Daniel Cormier", gender: "Male" },
+    { id: 3, name: "Conor McGregor", gender: "Male" },
+    { id: 4, name: "Islam Makhachev", gender: "Male" },
+    { id: 5, name: "Valentina Shevchenko", gender: "Female" },
+    { id: 6, name: "Amanda Nunes", gender: "Female" },
+    { id: 7, name: "Farhad Bhatti", gender: "Male" },
+    { id: 8, name: "Rose Namajunas", gender: "Female" },
+    { id: 9, name: "Some Guy", gender: "Male" }
+  ];
   return (
     <div>
       <form onSubmit={handleSearch}>
@@ -17,9 +27,8 @@ const FightersPage = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-3">
         {fightersList.map((fighter) => (
-          <SearchCard key={fighter} name={fighter} />
+          <SearchCard key = {fighter.id} id={fighter.id} name={fighter.name} gender = {fighter.gender}/>
         ))}
-        <SearchCard name="Daniel Cormier" />
       </div>
 
 
