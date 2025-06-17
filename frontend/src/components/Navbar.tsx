@@ -11,7 +11,7 @@ import {
 
 const Navbar = () => {
   return (
-    <div className="flex justify-between w-full ml-4 my-2">
+    <div className="flex justify-between ml-4 my-2">
       <NavigationMenu viewport={false}>
         <NavigationMenuList className="">
           <NavigationMenuItem>
@@ -23,7 +23,7 @@ const Navbar = () => {
           <NavigationMenuItem>
             <NavigationMenuTrigger className="font-bold text-lg">Fighters</NavigationMenuTrigger>
             <NavigationMenuContent className="absolute z-50 mt-2">
-              <NavigationMenuLink href="/fighters">Link</NavigationMenuLink>
+              <NavigationMenuLink href="/fighters">Search</NavigationMenuLink>
             </NavigationMenuContent>
           </NavigationMenuItem>
 
