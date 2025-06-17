@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import Navbar from "./Navbar";
+import Footer from './Footer';
 //{ children }: { children: React.ReactNode }
 const Layout = () => {
   return (
@@ -11,9 +12,10 @@ const Layout = () => {
         <main className="flex-grow p-2">
           <Outlet />
         </main>
-        <footer className="w-full bg-black text-white text-center py-4">
+        {/* <footer className="w-full bg-black text-white text-center py-4">
           © 2025 StrikeStat
-        </footer>
+        </footer> */}
+        <Footer/>
 
       </div>
 
