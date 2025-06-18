@@ -1,9 +1,9 @@
-import HomeBanner from "./components/HomeBanner";
+import Trial from "./components/Trial";
 
 function App() {
   return (
     <>
-      <HomeBanner />
+      <Trial />
     </>
   );
 }
