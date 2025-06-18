@@ -3,7 +3,10 @@ import Trial from "./components/Trial";
 function App() {
   return (
     <>
-      <Trial />
+    <div className=" h-full">
+    <Trial />
+    </div>
+     
     </>
   );
 }
