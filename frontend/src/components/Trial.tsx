@@ -4,12 +4,12 @@ import Particles from './Particles';
 
 const Trial = () => {
   return (
-    <div className=" overflow-hidden w-full h-screen mx-auto px-4 sm:px-0   " style={{ width: '100%', height: 'h-screen', position: 'relative' }}>
-      <div className=" absolute inset-0 bg-black rounded-lg" />
+    <div className="overflow-hidden w-full h-screen mx-auto px-4 sm:px-0   " style={{ width: '100%', height: 'h-screen', position: 'relative' }}>
+      <div className=" absolute inset-0 bg-black rounded-xl" />
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-white">
         <div className="inline-block text-center">
           <BlurText
-            text="Strike Stat"
+            text="Strike Stats"
             delay={300}
             animateBy="words"
             direction="top"
@@ -29,7 +29,7 @@ const Trial = () => {
               className="text-xl md:text-4xl font-mono mb-2"
             />
             <BlurText
-              text="Done Right"
+              text="Done Right."
               delay={900}
               animateBy="words"
               direction="top"
@@ -44,8 +44,8 @@ const Trial = () => {
       </div>
       <Particles
         particleColors={['#E01010', '#E01010']}
-        particleCount={250}
-        particleSpread={15}
+        particleCount={275}
+        particleSpread={20}
         speed={0.1}
         particleBaseSize={200}
         moveParticlesOnHover={true}
