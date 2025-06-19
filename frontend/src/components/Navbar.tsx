@@ -12,7 +12,7 @@ import {
 
 const Navbar = () => {
   return (
-    <div className="flex justify-between ml-2 my-2">
+    <div className="flex justify-between ml-2 my-2 font-mono">
       <NavigationMenu viewport={false}>
         <NavigationMenuList className="">
           <NavigationMenuItem>

@@ -13,7 +13,7 @@ const Trial = () => {
             delay={300}
             animateBy="words"
             direction="top"
-            className="text-5xl md:text-8xl font-rubik mb-4"
+            className="text-5xl md:text-8xl font-mono mb-4"
 
           />
           <hr className="border-t-4 border-white w-full mb-8" />

@@ -1,7 +1,7 @@
 
 const FighterAnalytics = () => {
   return (
-    <div className="font-rubik">FighterAnalytics</div>
+    <div className="font-mono text-2xl">FighterAnalytics</div>
   )
 }
 
