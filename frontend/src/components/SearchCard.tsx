@@ -1,4 +1,3 @@
-import { IoPerson } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 
 interface Props {
@@ -18,9 +17,11 @@ const SearchCard: React.FC<Props> = ({ name, gender, id }) => {
         navigate(`/fighters/${id}`);
     }
     return (
-        <div onClick={handleClick} className="p-2 flex font-mono shadow-sm sm:mx-2 my-2 items-center rounded-lg text-center cursor-pointer hover:bg-gray-100 transition">
-            <IoPerson className={gender === "Male" ? "text-blue-300" : "text-pink-200"} size={35} />
-            <h1 className="ml-5 mt-3">{name}</h1>
+        <div onClick={handleClick} className="p-3 flex flex-col font-mono shadow-sm sm:mx-2 my-2 items-center rounded-lg text-center cursor-pointer hover:shadow-xl transition">
+            <img className="w-full"src="/logo.png"></img>
+            {/* <IoPerson className={gender === "Male" ? "text-blue-300" : "text-pink-200"} size={35} /> */}
+            <h1 className="ml-5 mt-3 text-lg">{name}</h1>
+            <h1>{gender}</h1>
         </div>
     )
 }
