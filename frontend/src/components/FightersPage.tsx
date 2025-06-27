@@ -30,31 +30,29 @@ const fightersList: Fighter[] = [
   { id: 18, name: "Dustin Poirier", gender: "Male" },
   { id: 19, name: "Max Holloway", gender: "Male" },
   { id: 20, name: "Robert Whittaker", gender: "Male" },
-  // …add the rest of your fighters here
 ];
 
 const FightersPage: React.FC = () => {
   const pageSize = 12;
   const pageCount = Math.ceil(fightersList.length / pageSize);
-
   const [page, setPage] = useState(1);
+
   const paginated = fightersList.slice(
     (page - 1) * pageSize,
     page * pageSize
   );
 
   return (
-    <div className="px-4 py-6">
-      {/* Fighters grid */}
+    <div className="px-2 py-2">
       <div
         className="
-          grid
-          grid-cols-1
-          sm:grid-cols-2
-          md:grid-cols-3
-          lg:grid-cols-4
-          gap-4
-        "
+              grid 
+               grid-cols-1 
+                md:grid-cols-2
+               lg:grid-cols-4 
+               gap-4 
+                justify-items-center
+             "
       >
         {paginated.map((f) => (
           <SearchCard
@@ -66,12 +64,11 @@ const FightersPage: React.FC = () => {
         ))}
       </div>
 
-      {/* Shadcn Pagination */}
       <div className="flex justify-center mt-6">
         <Pagination
           currentPage={page}
           totalPages={pageCount}
-          onChange={(newPage: React.SetStateAction<number>) => setPage(newPage)}
+          onChange={(newPage) => setPage(newPage)}
         />
       </div>
     </div>

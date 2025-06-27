@@ -1,30 +1,70 @@
+// src/components/SearchCard.tsx
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { Card, CardContent } from "@/components/ui/card";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { IoPerson } from "react-icons/io5";
 
 interface Props {
-    id: number
-    name: string
-    gender: string
+  id: number;
+  name: string;
+  gender: "Male" | "Female";
+  avatarUrl?: string;
+  weightClass?: string;
+  record?: string;
 }
 
-/**
- * SearchCard displays a fighter's name when user searches a name
- *
- * @param name - The name of the fighter to display.
- */
-const SearchCard: React.FC<Props> = ({ name, gender, id }) => {
-    const navigate = useNavigate();
-    const handleClick = () =>{
-        navigate(`/fighters/${id}`);
-    }
+const SearchCard: React.FC<Props> = React.memo(
+  ({
+    id,
+    name,
+    gender,
+    avatarUrl,
+    weightClass = "WEIGHTCLASS",
+    record = "0-0-0",
+    
+  }) => {
     return (
-        <div onClick={handleClick} className="active:scale-100 p-3 flex flex-col font-mono shadow-sm sm:mx-2 my-2 items-center rounded-lg text-center cursor-pointer hover:shadow-xl transition">
-            <img className="w-full"src="/logo.png"></img>
-            {/* <IoPerson className={gender === "Male" ? "text-blue-300" : "text-pink-200"} size={35} /> */}
-            <h1 className="ml-5 mt-3 text-lg">{name}</h1>
-            <h1>{gender}</h1>
-        </div>
-    )
-}
+      <Link to={`/fighters/${id}`} className="block w-full max-w-xs">
+        <Card className="hover:shadow-lg hover:scale-[1.02] transition-transform duration-200">
+          <CardContent className="flex flex-col items-center p-4 space-y-3">
+            <Avatar className="h-24 w-24">
+              <AvatarImage
+                src={avatarUrl ?? "/logo.png"}
+                alt={`${name} avatar`}
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.src = "/logo.png";
+                }}
+                className="object-cover"
+              />
+              <AvatarFallback className="flex items-center justify-center bg-gray-100 text-gray-500">
+                <IoPerson size={32} />
+              </AvatarFallback>
+            </Avatar>
 
-export default SearchCard
+         
+            <h2 className="font-mono text-lg font-semibold text-center">
+              {name}
+            </h2>
+       
+            <div className="flex space-x-2">
+              <Badge variant="outline" className="uppercase text-xs px-2 py-1">
+                {gender}
+              </Badge>
+              <Badge variant="default" className="uppercase text-xs px-2 py-1">
+                {weightClass}
+              </Badge>
+              <Badge variant="secondary" className="uppercase text-xs px-2 py-1">
+                {record}
+              </Badge>
+            </div>
+          </CardContent>
+        </Card>
+      </Link>
+    );
+  }
+);
+
+export default SearchCard;
