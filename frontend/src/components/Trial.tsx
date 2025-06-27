@@ -1,6 +1,7 @@
 import { GiPunch } from 'react-icons/gi';
 import BlurText from './BlurText';
 import Particles from './Particles';
+import React from 'react';
 
 const Trial = () => {
   return (
