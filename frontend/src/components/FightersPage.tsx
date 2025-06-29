@@ -1,7 +1,7 @@
 // src/pages/FightersPage.tsx
+import { Pagination } from "@/components/ui/pagination";
 import React, { useState } from "react";
 import SearchCard from "../components/SearchCard";
-import { Pagination } from "@/components/ui/pagination";
 
 interface Fighter {
   id: number;
