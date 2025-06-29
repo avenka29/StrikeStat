@@ -4,14 +4,9 @@ import BioCard from "./BioCard";
 
 const FighterAnalytics = () => {
   return (
+    
     <div className="flex flex-col items-center ">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center justify-items-center my-4">
-        <div className="w-50 h-68 overflow-hidden rounded-md ">
-          <img className="w-full h-full object-cover" src="/test.jpg" />
-        </div>
-        <BioCard />
-      </div>
-<h1 className="flex items-center gap-4 my-2 text-4xl">
+      <h1 className="flex items-center gap-4 my-2 text-4xl">
   Islam Makhachev
   <span
     className="bg-gray-100 rounded-md inline-flex overflow-hidden"
@@ -24,6 +19,13 @@ const FighterAnalytics = () => {
   </span>
   {/* <span className="text-sm text-gray-600">Russia</span> */}
 </h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center justify-items-center my-4">
+        <div className="w-50 h-68 overflow-hidden rounded-md ">
+          <img className="w-full h-full object-cover" src="/test.jpg" />
+        </div>
+        <BioCard />
+      </div>
+
       <div className="w-full px-4 my-2">
         <Tabs defaultValue="Analytics">
           <TabsList className="flex justify-center w-full gap-4">
