@@ -1,6 +1,22 @@
 from fastapi import FastAPI
 from database import database
+from pydantic import BaseModel
+from datetime import date
+
 app = FastAPI()
+
+class Match(BaseModel):
+    left_fighter_name: str
+    right_fighter_name: str
+    winner_name: str
+    match: int
+    round: int
+    time: str
+    method: str
+    referee_name: str
+    date: date
+    event_title: str
+    location: str
 
 @app.on_event("startup")
 async def connectDatabase():
@@ -12,6 +28,13 @@ async def cleanUp():
 
 @app.get("/search")
 async def searchHandler(search: str):
-    sql = f"SELECT * FROM fighters_new WHERE name ILIKE '{search}%' ORDER BY name"
+    sql = f"""SELECT * FROM fighters_new WHERE name ILIKE '{search}%' ORDER BY name"""
     results = await database.fetch_all(query = sql)
+    return results
+
+@app.get("/matches", response_model=list[Match])
+async def getMatches(name: str):
+    query = f"""SELECT * FROM matches_new WHERE left_fighter_name = '{name}' OR right_fighter_name = '{name}' 
+    ORDER BY date DESC"""
+    results = await database.fetch_all(query = query)
     return results

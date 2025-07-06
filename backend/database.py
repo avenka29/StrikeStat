@@ -1,5 +1,9 @@
 from databases import Database
+from dotenv import load_dotenv
+import os
 
-DATA_URL = "postgresql://postgres:Kakash!081@localhost:5432/UFC_Data"
+load_dotenv()  # loads variables from .env file in current directory
 
-database = Database(DATA_URL)
+database_url = os.getenv("DATABASE_URL")
+
+database = Database(database_url)
