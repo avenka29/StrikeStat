@@ -247,10 +247,10 @@ referee_name TEXT
 
 --Creating events table
 CREATE TABLE events(
-event_id TEXT, 
-title TEXT, 
+event_id TEXT,
+title TEXT,
 date DATE,
-Location TEXT, 
+Location TEXT,
 canceled BOOLEAN
 )
 

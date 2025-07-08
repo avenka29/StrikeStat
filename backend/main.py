@@ -2,8 +2,16 @@ from fastapi import FastAPI
 from database import database
 from pydantic import BaseModel
 from datetime import date
-
+from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # or ["*"] to allow all origins
+    allow_credentials=True,
+    allow_methods=["*"],  # allow all HTTP methods
+    allow_headers=["*"],  # allow all headers
+)
 
 class Match(BaseModel):
     left_fighter_name: str
@@ -32,9 +40,9 @@ async def searchHandler(search: str):
     results = await database.fetch_all(query = sql)
     return results
 
-@app.get("/matches", response_model=list[Match])
+@app.get("/matches")
 async def getMatches(name: str):
-    query = f"""SELECT * FROM matches_new WHERE left_fighter_name = '{name}' OR right_fighter_name = '{name}' 
+    query = f"""SELECT * FROM matches_new WHERE left_fighter_name = '{name}' OR right_fighter_name = '{name}'
     ORDER BY date DESC"""
-    results = await database.fetch_all(query = query)
+    results = await database.fetch_all(query = query) 
     return results

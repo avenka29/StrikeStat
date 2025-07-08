@@ -1,10 +1,10 @@
 // src/components/SearchCard.tsx
-import React from "react";
-import { Link } from "react-router-dom";
-import { Card, CardContent } from "@/components/ui/card";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
+import React from "react";
 import { IoPerson } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 interface Props {
   id: number;
@@ -26,7 +26,7 @@ const SearchCard: React.FC<Props> = React.memo(
     
   }) => {
     return (
-      <Link to={`/fighters/${id}`} className="block w-full max-w-xs">
+      <Link to={`/fighters/${encodeURIComponent(id)}?name=${encodeURIComponent(name)}`} className="block w-full max-w-xs">
         <Card className="hover:shadow-lg hover:scale-[1.02] transition-transform duration-200">
           <CardContent className="flex flex-col items-center p-4 space-y-3">
             <Avatar className="h-24 w-24">

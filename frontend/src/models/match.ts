@@ -1,0 +1,21 @@
+export interface Match {
+    fight_id?: string | null;
+    event_id?: string | null;
+    left_fighter_id?: string | null;
+    left_fighter_name?: string | null;
+    right_fighter_id?: string | null;
+    right_fighter_name?: string | null;
+    winner?: string | null;
+    winner_name?: string | null;
+    is_main_event?: boolean | null;
+    match?: number | null;
+    round?: number | null;
+    time?: string | null;
+    method?: string | null;
+    weight_class?: string | null;
+    referee_id?: string | null;
+    referee_name?: string | null;
+    event_title?: string | null;
+    date?: string | null;
+    location?: string | null;
+}
