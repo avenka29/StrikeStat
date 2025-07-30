@@ -267,3 +267,24 @@ date = events.date,
 location = events.Location
 FROM events
 WHERE events.event_id = matches_new.event_id
+
+
+--Create new columns in matches_new
+ALTER TABLE matches_new
+ADD COLUMN left_fighter_ref INTEGER,
+ADD COLUMN right_fighter_ref INTEGER;
+
+
+--fill left and right reference columns 
+UPDATE matches_new m
+SET right_fighter_ref = f.id
+FROM fighters_new f
+WHERE m.right_fighter_name = f.name;
+
+UPDATE matches_new m
+SET left_fighter_ref = f.id
+FROM fighters_new f
+WHERE m.left_fighter_name = f.name;
+
+
+

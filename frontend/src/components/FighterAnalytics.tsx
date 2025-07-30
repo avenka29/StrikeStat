@@ -25,7 +25,7 @@ const FighterAnalytics = () => {
     async function fetchMatches() {
       try {
         const response = await axios.get(
-          `http://127.0.0.1:8000/matches?name=${encodeURIComponent(name)}`
+          `http://127.0.0.1:8000/matchtry?name=${encodeURIComponent(name)}`
         );
         setMatches(response.data);
       } catch (error) {
