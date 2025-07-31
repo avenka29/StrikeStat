@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from database import database
 from pydantic import BaseModel
 from datetime import date
-
+import json
 from typing import List, Optional
 from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
@@ -44,7 +44,7 @@ class Match(BaseModel):
     right_fighter_name: str
     winner_name: Optional[str] = None
     method: str
-    date: str
+    date: date
     location: str
     lf: int
     rf: int
@@ -72,7 +72,7 @@ async def getMatches(name: str):
     results = await database.fetch_all(query = query)
     return results
 
-@app.get("/matchtry")
+@app.get("/matchtry", response_model = List[Match])
 async def getMatchesTry(name: str):
     query = f"""
         SELECT
@@ -84,7 +84,7 @@ async def getMatchesTry(name: str):
         'name', lf.name,
         'birthdate', lf.birthdate,
         'nickname', lf.nickname,
-        'association', lf.association,
+        'association', string_to_array(lf.association, ','),
         'weight_class', lf.weight_class,
         'wins', lf.wins,
         'losses', lf.losses,
@@ -100,14 +100,14 @@ async def getMatchesTry(name: str):
         'height_inches', lf.height_inches,
         'height_cm', lf.height_cm,
         'stance', lf.stance
-    ) AS left_fighter,
+    )::jsonb AS left_fighter,
 
     json_build_object(
         'fighter_id', rf.id,
         'name', rf.name,
         'birthdate', rf.birthdate,
         'nickname', rf.nickname,
-        'association', rf.association,
+        'association', string_to_array(rf.association, ','),
         'weight_class', rf.weight_class,
         'wins', rf.wins,
         'losses', rf.losses,
@@ -123,7 +123,7 @@ async def getMatchesTry(name: str):
         'height_inches', rf.height_inches,
         'height_cm', rf.height_cm,
         'stance', rf.stance
-    ) AS right_fighter
+    )::jsonb AS right_fighter
 
 FROM matches_new m
 JOIN fighters_new lf ON m.left_fighter_ref = lf.id
@@ -133,4 +133,10 @@ ORDER BY m.date DESC;
 
     """
     results = await database.fetch_all(query=query, values={"name": name})
-    return results
+    parsed_results = []
+    for row in results:
+        row = dict(row)
+        row['left_fighter'] = json.loads(row['left_fighter'])
+        row['right_fighter'] = json.loads(row['right_fighter'])
+        parsed_results.append(row)
+    return parsed_results
