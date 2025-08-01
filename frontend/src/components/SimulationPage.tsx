@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
 import { IoPerson } from "react-icons/io5";
 import { GiBoxingGlove } from "react-icons/gi";
 import { IoSearch } from "react-icons/io5";
+import SearchCard from "./SearchCard";
 
 interface Fighter {
   id: number;
@@ -63,45 +62,7 @@ const SimulationPage = () => {
     fighter.name.toLowerCase().includes(searchQuery2.toLowerCase())
   );
 
-  const FighterCard = ({ fighter, onSelect }: { fighter: Fighter; onSelect: () => void }) => (
-    <Card 
-      className="hover:shadow-lg hover:scale-[1.02] transition-transform duration-200 cursor-pointer"
-      onClick={onSelect}
-    >
-      <CardContent className="flex flex-col items-center p-2 sm:p-4 space-y-2 sm:space-y-3">
-        <Avatar className="h-12 w-12 sm:h-16 sm:w-16">
-          <AvatarImage
-            src={fighter.avatarUrl ?? "/logo.png"}
-            alt={`${fighter.name} avatar`}
-            onError={(e) => {
-              e.currentTarget.onerror = null;
-              e.currentTarget.src = "/logo.png";
-            }}
-            className="object-cover"
-          />
-          <AvatarFallback className="flex items-center justify-center bg-gray-100 text-gray-500">
-            <IoPerson size={20} className="sm:w-6 sm:h-6" />
-          </AvatarFallback>
-        </Avatar>
 
-        <h3 className="font-mono text-xs sm:text-sm font-semibold text-center leading-tight">
-          {fighter.name}
-        </h3>
-
-        <div className="flex flex-wrap gap-1 justify-center">
-          <Badge variant="outline" className="uppercase text-xs px-1 sm:px-2 py-0.5 sm:py-1">
-            {fighter.gender}
-          </Badge>
-          <Badge variant="default" className="uppercase text-xs px-1 sm:px-2 py-0.5 sm:py-1">
-            {fighter.weightClass}
-          </Badge>
-          <Badge variant="secondary" className="uppercase text-xs px-1 sm:px-2 py-0.5 sm:py-1">
-            {fighter.record}
-          </Badge>
-        </div>
-      </CardContent>
-    </Card>
-  );
 
   const FighterSection = ({ 
     title, 
@@ -131,7 +92,16 @@ const SimulationPage = () => {
       <CardContent className="space-y-4">
         {selectedFighter ? (
           <div className="text-center">
-            <FighterCard fighter={selectedFighter} onSelect={() => setShowList(!showList)} />
+            <div className="max-w-xs mx-auto">
+              <SearchCard
+                id={selectedFighter.id}
+                name={selectedFighter.name}
+                gender={selectedFighter.gender as "Male" | "Female"}
+                avatarUrl={selectedFighter.avatarUrl}
+                weightClass={selectedFighter.weightClass}
+                record={selectedFighter.record}
+              />
+            </div>
             <Button 
               variant="outline" 
               className="mt-2 w-full sm:w-auto"
@@ -176,42 +146,24 @@ const SimulationPage = () => {
             
             <div className="max-h-64 overflow-y-auto border rounded-lg">
               {filteredFighters.length > 0 ? (
-                filteredFighters.map((fighter) => (
-                  <div
-                    key={fighter.id}
-                    className="flex items-center p-3 hover:bg-gray-50 cursor-pointer border-b last:border-b-0 transition-colors"
-                    onClick={() => onSelectFighter(fighter)}
-                  >
-                    <Avatar className="h-8 w-8 mr-3">
-                      <AvatarImage
-                        src={fighter.avatarUrl ?? "/logo.png"}
-                        alt={`${fighter.name} avatar`}
-                        onError={(e) => {
-                          e.currentTarget.onerror = null;
-                          e.currentTarget.src = "/logo.png";
-                        }}
-                        className="object-cover"
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 p-3">
+                  {filteredFighters.map((fighter) => (
+                    <div
+                      key={fighter.id}
+                      className="cursor-pointer flex justify-center"
+                      onClick={() => onSelectFighter(fighter)}
+                    >
+                      <SearchCard
+                        id={fighter.id}
+                        name={fighter.name}
+                        gender={fighter.gender as "Male" | "Female"}
+                        avatarUrl={fighter.avatarUrl}
+                        weightClass={fighter.weightClass}
+                        record={fighter.record}
                       />
-                      <AvatarFallback className="flex items-center justify-center bg-gray-100 text-gray-500">
-                        <IoPerson size={16} />
-                      </AvatarFallback>
-                    </Avatar>
-                    <div className="flex-1">
-                      <p className="font-mono text-sm font-medium">{fighter.name}</p>
-                      <div className="flex gap-1 mt-1">
-                        <Badge variant="outline" className="text-xs px-1 py-0.5">
-                          {fighter.gender}
-                        </Badge>
-                        <Badge variant="default" className="text-xs px-1 py-0.5">
-                          {fighter.weightClass}
-                        </Badge>
-                        <Badge variant="secondary" className="text-xs px-1 py-0.5">
-                          {fighter.record}
-                        </Badge>
-                      </div>
                     </div>
-                  </div>
-                ))
+                  ))}
+                </div>
               ) : (
                 <div className="p-4 text-center text-gray-500">
                   <p className="text-sm">No fighters found</p>
