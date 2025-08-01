@@ -50,6 +50,7 @@ class Match(BaseModel):
     rf: int
     left_fighter: Fighter
     right_fighter: Fighter
+    event_title: str
 
 @app.on_event("startup")
 async def connectDatabase():

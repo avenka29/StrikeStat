@@ -4,9 +4,10 @@ import { TableCell, TableRow } from "./ui/table";
 interface MatchRowProps {
     match: Match;
     fighterName: string;
+    event_title: string;
 }
 
-const MatchRow: React.FC<MatchRowProps> = ({ match, fighterName }) => {
+const MatchRow: React.FC<MatchRowProps> = ({ match, fighterName, event_title }) => {
     let opponent: string =
         match.left_fighter_name === fighterName
             ? match.right_fighter_name || "Unknown"
@@ -24,7 +25,7 @@ const MatchRow: React.FC<MatchRowProps> = ({ match, fighterName }) => {
 
     return (
         <TableRow className={`${decideColor()} py-4 rounded-md`}>
-            <TableCell className="font-medium">{match.event_title}</TableCell>
+            <TableCell className="font-medium">{event_title}</TableCell>
             <TableCell>{match.date}</TableCell>
             <TableCell>{opponent}</TableCell>
             <TableCell className="text-right">{match.method}</TableCell>

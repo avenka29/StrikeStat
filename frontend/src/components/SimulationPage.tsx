@@ -1,10 +1,9 @@
-import React, { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { IoPerson } from "react-icons/io5";
+import { useState } from "react";
 import { GiBoxingGlove } from "react-icons/gi";
-import { IoSearch } from "react-icons/io5";
+import { IoPerson, IoSearch } from "react-icons/io5";
 import SearchCard from "./SearchCard";
 
 interface Fighter {
@@ -198,7 +197,7 @@ const SimulationPage = () => {
 
         <div className="flex items-center justify-center py-2">
           <div className="text-center">
-            <GiBoxingGlove size={32} className="sm:w-12 sm:h-12 text-red-500 mx-auto mb-1 sm:mb-2" />
+            <GiBoxingGlove size={32} className="sm:w-12 sm:h-12 text-red-300 mx-auto mb-1 sm:mb-2" />
             <p className="text-xs sm:text-sm text-gray-500">VS</p>
           </div>
         </div>

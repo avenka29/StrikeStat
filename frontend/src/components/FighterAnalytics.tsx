@@ -83,6 +83,7 @@ const FighterAnalytics = () => {
                       key={match.id || match.event_title + match.date} // Add a stable key
                       match={match}
                       fighterName={name}
+                      event_title={match.event_title}
                     />
                   ))}
                 </TableBody>
