@@ -29,8 +29,8 @@ const Navbar = () => {
           </NavigationMenuItem>
 
           <NavigationMenuItem>
-            <NavigationMenuLink href="/" className="font-bold text-lg">
-              About
+            <NavigationMenuLink href="/simulation" className="font-bold text-lg">
+              Simulation
             </NavigationMenuLink>
           </NavigationMenuItem>
         </NavigationMenuList>
